@@ -1,4 +1,3 @@
-from SensorInfoResponse import SensorInfoResponse
 from flask import Flask, request, make_response
 from flask_pymongo import PyMongo
 from flask import jsonify
@@ -7,6 +6,7 @@ import pymongo
 from datetime import datetime, timedelta
 from LoginResponse import LoginResponse
 from UserInfoResponse import UserInfoResponse
+from SensorInfoResponse import SensorInfoResponse
 from functools import wraps
 from bson.objectid import ObjectId
 from bson.timestamp import Timestamp
@@ -155,5 +155,5 @@ def get_data(data):
 
 
 
-# if __name__ == "__main__":
-#     app.run(debug=True)
+if __name__ == "__main__":
+    app.run(debug=True)
