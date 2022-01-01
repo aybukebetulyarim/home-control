@@ -15,8 +15,8 @@ import time
 import datetime
 
 app = Flask(__name__)
-app.config["MONGO_URI"] = "mongodb://admin:uJ7NwsbFSHUsEGG@cluster0-shard-00-00.d1esl.mongodb.net:27017,cluster0-shard-00-01.d1esl.mongodb.net:27017,cluster0-shard-00-02.d1esl.mongodb.net:27017/smarthome?ssl=true&replicaSet=atlas-6e4ray-shard-0&authSource=admin&w=majority"
-app.config['SECRET_KEY'] = 'smarthomeAybuke**'
+app.config["MONGO_URI"] =
+app.config['SECRET_KEY'] =
 mongo = PyMongo(app)
 
 def getNowTime():
