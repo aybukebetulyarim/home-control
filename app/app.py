@@ -158,6 +158,26 @@ def setSensor():
 
     return make_response(jsonify({"message":"Sensor data sended database."}))
 
+@app.route("/sensor-insert", methods=["GET"])
+def insertSensor():
+    temperature = request.args.get("temperature")
+    motion      = request.args.get("motion")
+    gas         = request.args.get("gas")
+    humidity    = request.args.get("humidity")
+    timestamp   = current_milli_time()
+
+    sensorData = {
+        'temperature': temperature,
+        'motion'     : motion,
+        'gas'        : gas,
+        'humidity'   : humidity,
+        "timestamp"  : timestamp
+    }
+    mongo.db.sensors.insert_one(sensorData)
+
+    return make_response(jsonify({"message":"Sensor data sended database3."}))
+
+    
 @app.route("/user", methods = ['POST'])
 def home_page():
 
