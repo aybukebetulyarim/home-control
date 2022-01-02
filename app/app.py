@@ -4,9 +4,6 @@ from flask import jsonify
 import jwt
 import pymongo
 from datetime import datetime, timedelta
-from LoginResponse import LoginResponse
-from UserInfoResponse import UserInfoResponse
-from SensorInfoResponse import SensorInfoResponse
 from functools import wraps
 from bson.objectid import ObjectId
 from bson.timestamp import Timestamp
@@ -18,6 +15,41 @@ app = Flask(__name__)
 app.config["MONGO_URI"] = "mongodb://admin:uJ7NwsbFSHUsEGG@cluster0-shard-00-00.d1esl.mongodb.net:27017,cluster0-shard-00-01.d1esl.mongodb.net:27017,cluster0-shard-00-02.d1esl.mongodb.net:27017/smarthome?ssl=true&replicaSet=atlas-6e4ray-shard-0&authSource=admin&w=majority"
 app.config['SECRET_KEY'] = 'smarthomeAybuke**'
 mongo = PyMongo(app)
+
+class LoginResponse:
+    def __init__(self, token):
+        self.token = token
+
+    def serialize(self):
+        return {
+            'token': self.token
+        }
+
+class SensorInfoResponse:
+    def __init__(self,response):
+        self.temperature = response['temperature']
+        self.motion      = response['motion']
+        self.gas         = response['gas']
+        self.humidity    = response['humidity']
+        self.timestamp   = response['timestamp']
+
+    def serialize(self):
+        return {
+        'temperature': self.temperature,
+        'motion'     : self.motion,
+        'gas'        : self.gas,
+        'humidity'   : self.humidity,
+        'timestamp'  : self.timestamp
+        }
+
+class UserInfoResponse:
+    def __init__(self,username):
+        self.username = username
+
+    def serialize(self):
+        return {
+            'username': self.username
+        }
 
 def getNowTime():
     timestamp = Timestamp(int(dt.datetime.today().timestamp()), 1)
