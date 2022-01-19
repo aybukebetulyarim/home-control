@@ -15,3 +15,6 @@ service to receive data every 10 seconds and displays the latest information in 
 Reference ranges for data such as temperature, humidity, gas, movement will be determined
 in the app beforehand. When it goes out of these reference ranges, the user will be informed
 via the mobile application.
+
+
+![system](https://user-images.githubusercontent.com/44734333/150090087-cbf64b2a-6fc0-4042-b439-dae3460c211f.png)
